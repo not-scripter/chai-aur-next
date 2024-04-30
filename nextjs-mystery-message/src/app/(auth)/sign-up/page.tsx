@@ -123,9 +123,6 @@ export default function page() {
                     >
                       test {usernameMessage}
                     </p>
-                    <FormDescription>
-                      This is your public username.
-                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -140,9 +137,6 @@ export default function page() {
                     <FormControl>
                       <Input placeholder="Email" {...field} />
                     </FormControl>
-                    <FormDescription>
-                      This is your email address.
-                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}
@@ -161,9 +155,6 @@ export default function page() {
                         {...field}
                       />
                     </FormControl>
-                    <FormDescription>
-                      This is your email address.
-                    </FormDescription>
                     <FormMessage />
                   </FormItem>
                 )}

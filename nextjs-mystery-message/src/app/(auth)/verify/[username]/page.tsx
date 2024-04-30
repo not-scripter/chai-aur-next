@@ -90,9 +90,6 @@ export default function page() {
                       </InputOTPGroup>
                     </InputOTP>
                   </FormControl>
-                  <FormDescription>
-                    This is your verification code.
-                  </FormDescription>
                   <FormMessage />
                 </FormItem>
               )}
