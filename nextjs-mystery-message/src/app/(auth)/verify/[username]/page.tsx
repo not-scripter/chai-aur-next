@@ -11,7 +11,11 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { InputOTP, InputOTPGroup, InputOTPSlot } from "@/components/ui/input-otp";
+import {
+  InputOTP,
+  InputOTPGroup,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
 import { useToast } from "@/components/ui/use-toast";
 import { VerifySchema } from "@/schemas/verifySchema";
 import { ApiResponse } from "@/types/ApiResponse";
@@ -30,7 +34,7 @@ export default function page() {
     resolver: zodResolver(VerifySchema),
   });
 
-  const onSubmit = (data: z.infer<typeof VerifySchema>) => {
+  const onSubmit = async (data: z.infer<typeof VerifySchema>) => {
     try {
       const response = await axios.post(`/api/verify-code`, {
         username,
@@ -76,15 +80,15 @@ export default function page() {
                   <FormControl>
                     {/* <Input placeholder="OTP" {...field} /> */}
                     <InputOTP maxLength={6} {...field}>
-                  <InputOTPGroup>
-                    <InputOTPSlot index={0} />
-                    <InputOTPSlot index={1} />
-                    <InputOTPSlot index={2} />
-                    <InputOTPSlot index={3} />
-                    <InputOTPSlot index={4} />
-                    <InputOTPSlot index={5} />
-                  </InputOTPGroup>
-                </InputOTP>
+                      <InputOTPGroup>
+                        <InputOTPSlot index={0} />
+                        <InputOTPSlot index={1} />
+                        <InputOTPSlot index={2} />
+                        <InputOTPSlot index={3} />
+                        <InputOTPSlot index={4} />
+                        <InputOTPSlot index={5} />
+                      </InputOTPGroup>
+                    </InputOTP>
                   </FormControl>
                   <FormDescription>
                     This is your verification code.
