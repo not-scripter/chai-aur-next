@@ -100,36 +100,6 @@ export default function page() {
           {/* NOTE: shadcn form starts here */}
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              {/* NOTE: username field */}
-              <FormField
-                name="username"
-                control={form.control}
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Username</FormLabel>
-                    <FormControl>
-                      <Input
-                        placeholder="Username"
-                        {...field}
-                        onChange={(e) => {
-                          field.onChange(e);
-                          debounced(e.target.value);
-                        }}
-                      />
-                    </FormControl>
-                    {isCheckingUsername && <Loader2 className="animate-spin" />}
-                    <p
-                      className={`text-sm ${usernameMessage === "username is unique" ? "text-green-600" : "text-red-600"}`}
-                    >
-                      test {usernameMessage}
-                    </p>
-                    <FormDescription>
-                      This is your public username.
-                    </FormDescription>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
               {/* NOTE: email field */}
               <FormField
                 name="email"
