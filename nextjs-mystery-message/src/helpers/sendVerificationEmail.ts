@@ -5,24 +5,24 @@ import { ApiResponse } from "@/types/ApiResponse";
 export async function sendVerificationEmail(
   email: string,
   username: string,
-  verifCode: string
-): Promise<ApiResponse>{
+  verifyCode: string,
+): Promise<ApiResponse> {
   try {
     await resend.emails.send({
-      from: 'onboarding@resend.dev',
+      from: "onboarding@resend.dev",
       to: email,
-      subject: 'Mystery Message | Verification Code',
-      react: VerificationEmail({username, otp: verifCode}),
+      subject: "Mystery Message | Verification Code",
+      react: VerificationEmail({ username, otp: verifyCode }),
     });
     return {
       success: true,
-      message: "Verification Email send successfully"
-    }
+      message: "Verification Email send successfully",
+    };
   } catch (emailError) {
-    console.error("Erroe sending verification email", emailError)
+    console.error("Error sending verification email", emailError);
     return {
       success: false,
-      message: "Failed to sending verification email"
-    }
+      message: "Failed to sending verification email",
+    };
   }
 }

@@ -115,7 +115,9 @@ export default function page() {
     }
   };
 
-  const { username } = session?.user as User;
+  // const { username } = session?.user as User; //NOTE: causing error
+  const username = session?.user.username;
+
   //TODO: research more about baseUrl
   const baseUrl = `${window.location.protocol}//${window.location.host}`;
   const profileUrl = `${baseUrl}/u/${username}`;

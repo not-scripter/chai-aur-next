@@ -30,7 +30,7 @@ export default function page() {
   const form = useForm<z.infer<typeof SignInSchema>>({
     resolver: zodResolver(SignInSchema),
     defaultValues: {
-      email: "",
+      identifier: "",
       password: "",
     },
   });
@@ -39,7 +39,7 @@ export default function page() {
     setisSubmitting(true);
     const result = await signIn("credentials", {
       redirect: false,
-      email: data.email,
+      identifier: data.identifier,
       password: data.password,
     });
     if (result?.error) {
@@ -50,7 +50,7 @@ export default function page() {
       });
     }
 
-    if (result?.url) {
+    if (result?.ok) {
       router.replace("/dashboard");
       setisSubmitting(false);
     }
@@ -68,13 +68,13 @@ export default function page() {
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
-              name="email"
+              name="identifier"
               control={form.control}
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Email/Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="Email" {...field} />
+                    <Input {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

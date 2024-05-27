@@ -14,6 +14,7 @@ import { SignUpSchema } from "@/schemas/signUpSchema";
 import { ApiResponse } from "@/types/ApiResponse";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios, { AxiosError } from "axios";
+import { log } from "console";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -121,7 +122,7 @@ export default function page() {
                   <p
                     className={`text-sm ${usernameMessage === "username is unique" ? "text-green-600" : "text-red-600"}`}
                   >
-                    test {usernameMessage}
+                    {usernameMessage}
                   </p>
                   <FormMessage />
                 </FormItem>
