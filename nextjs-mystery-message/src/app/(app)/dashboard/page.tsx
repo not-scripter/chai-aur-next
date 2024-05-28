@@ -119,7 +119,10 @@ export default function page() {
   const username = session?.user.username;
 
   //TODO: research more about baseUrl
-  const baseUrl = `${window.location.protocol}//${window.location.host}`;
+  //NOTE: for client side
+  // const baseUrl = `${window.location.protocol}//${window.location.host}`;
+  //NOTE: for server site
+  const baseUrl = process.env.SITE_URL;
   const profileUrl = `${baseUrl}/u/${username}`;
 
   const copyToClipboard = () => {
