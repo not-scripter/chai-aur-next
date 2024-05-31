@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const svgToDataUri = require("mini-svg-data-uri");
+
 const defaultTheme = require("tailwindcss/defaultTheme");
 const colors = require("tailwindcss/colors");
 const {
@@ -83,14 +84,12 @@ const config: Config = {
           "0%": { transform: "rotate(215deg) translateX(0)", opacity: "1" },
           "70%": { opacity: "1" },
           "100%": {
-            transform: "rotate(215deg) translateX(-1200px)",
+            transform: "rotate(215deg) translateX(-500px)",
             opacity: "0",
           },
-        },
       },
     },
   },
   plugins: [addVariablesForColors, addSvgPatterns],
-};
-
-export default config;
+}
+export default config

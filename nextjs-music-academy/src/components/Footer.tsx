@@ -62,22 +62,24 @@ export default function Footer() {
           </p>
         </div>
         <div>
-          <h2>Quick Links</h2>
+          <h2 className="text-white text-lg font-semibold mb-4">Quick Links</h2>
           {footerItems.quickLinks.map((item: quickLink) => (
             <Link
               href={item.slug}
-              className="hover:text-white transition-colors duration-300"
+              className="flex flex-col hover:text-white transition-colors duration-300"
+              key={item.slug}
             >
               {item.title}
             </Link>
           ))}
         </div>
         <div>
-          <h2>Follow Us</h2>
+          <h2 className="text-white text-lg font-semibold mb-4">Follow us</h2>
           {footerItems.followUs.map((item: followUs) => (
             <Link
               href={item.slug}
-              className="hover:text-white transition-colors duration-300"
+              className="flex flex-col hover:text-white transition-colors duration-300"
+              key={item.slug}
             >
               {item.name}
             </Link>
