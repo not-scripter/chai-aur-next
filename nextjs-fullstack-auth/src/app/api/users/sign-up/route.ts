@@ -3,6 +3,7 @@ import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { sendEmail } from "@/helpers/mailer";
+import { log } from "console";
 
 dbConnect();
 
@@ -10,6 +11,8 @@ export async function POST(request: NextRequest) {
   try {
     const requestBody = await request.json();
     const { username, email, password } = requestBody;
+
+    console.log(requestBody);
 
     const user = await User.findOne({ email });
 
@@ -32,6 +35,8 @@ export async function POST(request: NextRequest) {
     });
 
     const savedUser = await newUser.save();
+
+    console.log(savedUser);
 
     //NOTE: send verification email
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });

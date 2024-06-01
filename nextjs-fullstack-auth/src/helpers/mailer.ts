@@ -45,7 +45,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       html: emailType === "VERIFY" ? verifyMail : "RESET" ? resetMail : "",
     };
 
-    const mailResponse = await transport.sendEmail(mailOptions);
+    const mailResponse = await transport.sendMail(mailOptions);
 
     return mailResponse;
   } catch (error: any) {

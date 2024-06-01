@@ -1,0 +1,7 @@
+POST http://localhost:3000/api/users/sign-up
+
+{
+  "username": "tester1",
+  "email": "tester1.gmail.com",
+  "password": "12345678"
+}

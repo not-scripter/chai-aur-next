@@ -1,0 +1,41 @@
+{
+	"info": {
+		"_postman_id": "58f68dcf-5f70-4321-b4a4-88d15ca11ff3",
+		"name": "nextjs-fullstack-auth",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34395165",
+		"_collection_link": "https://cloudy-robot-77382.postman.co/workspace/notscripter-Workspace~2d6f4e95-3596-418e-a740-1ce41900278a/collection/34395165-58f68dcf-5f70-4321-b4a4-88d15ca11ff3?action=share&source=collection_link&creator=34395165"
+	},
+	"item": [
+		{
+			"name": "sign-up",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\": \"tester1\",\n    \"email\": \"tester1@gmail.com\",\n    \"password\": \"12345678\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:3000/api/users/",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"api",
+						"users",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
