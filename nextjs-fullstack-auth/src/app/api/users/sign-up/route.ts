@@ -11,14 +11,12 @@ export async function POST(request: NextRequest) {
     const requestBody = await request.json();
     const { username, email, password } = requestBody;
 
-    console.log(requestBody);
-
     const user = await User.findOne({ email });
 
     if (user) {
       return NextResponse.json(
         {
-          error: "user not found",
+          error: "user already exists",
         },
         { status: 400 },
       );
@@ -34,8 +32,6 @@ export async function POST(request: NextRequest) {
     });
 
     const savedUser = await newUser.save();
-
-    console.log(savedUser);
 
     //NOTE: send verification email
     await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });

@@ -5,6 +5,7 @@ import bcrypt from "bcryptjs";
 export const sendEmail = async ({ email, emailType, userId }: any) => {
   try {
     const hashedToken = await bcrypt.hash(userId.toString(), 10);
+
     if (emailType === "VERIFY") {
       await User.findByIdAndUpdate(userId, {
         $set: {
@@ -14,10 +15,8 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       });
     } else if (emailType === "RESET") {
       await User.findByIdAndUpdate(userId, {
-        $set: {
-          forgotPasswordToken: hashedToken,
-          forgotPasswordTokenExpiry: Date.now() + 3600000,
-        },
+        forgotPasswordToken: hashedToken,
+        forgotPasswordTokenExpiry: Date.now() + 3600000,
       });
     }
 

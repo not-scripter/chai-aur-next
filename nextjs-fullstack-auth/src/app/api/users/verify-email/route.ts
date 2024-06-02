@@ -8,7 +8,6 @@ export async function POST(request: NextRequest) {
   try {
     const requestBody = await request.json();
     const { token } = requestBody;
-    console.log(token);
 
     const user = await User.findOne({
       verifyToken: token,
@@ -18,19 +17,17 @@ export async function POST(request: NextRequest) {
     if (!user) {
       return NextResponse.json(
         {
-          error: "user not found",
+          error: "invalid token",
         },
         { status: 400 },
       );
     }
 
-    console.log(user);
-
-    user.isVerifid = true;
+    user.isVerified = true;
     user.verifyToken = undefined;
     user.verifyTokenExpiry = undefined;
 
-    const netUser = await user.save();
+    await user.save();
 
     return NextResponse.json(
       {
