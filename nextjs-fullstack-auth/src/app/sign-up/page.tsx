@@ -22,7 +22,7 @@ export default function page() {
     try {
       await axios.post(`/api/users/sign-up`, user);
       toast.success("Signup Success");
-      router.replace(`/verify-email`);
+      router.push(`/verify-email`);
     } catch (error: any) {
       toast.error(error.message);
     }
@@ -43,41 +43,49 @@ export default function page() {
   return (
     <form
       onSubmit={onSignup}
-      className="flex flex-col items-center justify-center min-h-screen py-2"
+      className="flex flex-col items-center justify-center min-h-screen py-2 px-8"
     >
-      <h1>{loading ? "Processing" : "SignUp"}</h1>
+      <h1 className="text-4xl font-bold pb-8">
+        {loading ? "Processing" : "SignUp"}
+      </h1>
       <hr />
-      <label htmlFor="username">Username</label>
+      <label htmlFor="username" className="w-full">
+        Username
+      </label>
       <input
         type="text"
         id="username"
         value={user.username}
         onChange={(e) => setuser({ ...user, username: e.target.value })}
         placeholder="Enter your Username"
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full"
       />
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email" className="w-full left-0">
+        Email
+      </label>
       <input
         type="email"
         id="email"
         value={user.email}
         onChange={(e) => setuser({ ...user, email: e.target.value })}
         placeholder="Enter your Email Address"
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full"
       />
-      <label htmlFor="password">Password</label>
+      <label htmlFor="password" className="w-full left-0">
+        Password
+      </label>
       <input
         type="password"
         id="password"
         value={user.password}
         onChange={(e) => setuser({ ...user, password: e.target.value })}
         placeholder="Enter your Password"
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full"
       />
       <button
         type="submit"
         disabled={buttonDisabled}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className={`py-2 w-full border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 ${buttonDisabled ? "opacity-50" : "opacity-100"}`}
       >
         SignUp
       </button>

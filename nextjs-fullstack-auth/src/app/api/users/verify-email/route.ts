@@ -1,13 +1,13 @@
 import { dbConnect } from "@/dbConfig/dbConfig";
 import User from "@/models/userModel";
+import axios from "axios";
 import { NextRequest, NextResponse } from "next/server";
 
 dbConnect();
 
 export async function POST(request: NextRequest) {
   try {
-    const requestBody = await request.json();
-    const { token } = requestBody;
+    const { token } = await request.json();
 
     const user = await User.findOne({
       verifyToken: token,
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
         message: "email verified successfully",
         success: true,
       },
-      { status: 500 },
+      { status: 200 },
     );
   } catch (error: any) {
     return NextResponse.json(

@@ -18,6 +18,7 @@ export default function page() {
       await axios.post(`/api/users/verify-email`, { token });
       setverified(true);
       toast.success("Email Verified");
+      router.push(`/`);
     } catch (error: any) {
       seterror(error.response.data);
       toast.error("Error Veritying Email");
@@ -35,19 +36,18 @@ export default function page() {
     settoken(urlToken || "");
   }, [router]);
 
-  // useEffect(() => {
-  //   if (token.length > 0) {
-  //     setverified(true);
-  //   }
-  // }, [token]);
-
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1 className="text-4xl pb-8">Verify Email</h1>
+      <h1 className="text-4xl font-bold pb-8">Verify Email</h1>
       {(verified && (
         <div>
-          <h2>Verified</h2>
-          <Link href={"/login"}>Login</Link>
+          <h2 className="text-green-400 p-8">Verified</h2>
+          <Link
+            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            href={"/login"}
+          >
+            Login
+          </Link>
         </div>
       )) ||
         (token.length > 0 && (

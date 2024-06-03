@@ -38,34 +38,40 @@ export default function page() {
   return (
     <form
       onSubmit={onLogin}
-      className="flex flex-col items-center justify-center min-h-screen py-2"
+      className="flex flex-col items-center justify-center min-h-screen py-2 px-8"
     >
-      <h1>{loading ? "Processing" : "Login"}</h1>
+      <h1 className="text-4xl font-bold pb-8">
+        {loading ? "Processing" : "Login"}
+      </h1>
       <hr />
-      <label htmlFor="email">Email</label>
+      <label htmlFor="email" className="left-0 w-full">
+        Email
+      </label>
       <input
         type="email"
         id="email"
         value={user.email}
         onChange={(e) => setuser({ ...user, email: e.target.value })}
         placeholder="Enter your Email Address"
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full"
       />
-      <label htmlFor="password">Password</label>
+      <label htmlFor="password" className="w-full left-0">
+        Password
+      </label>
       <input
         type="password"
         id="password"
         value={user.password}
         onChange={(e) => setuser({ ...user, password: e.target.value })}
         placeholder="Enter your Password"
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black"
+        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-black w-full"
       />
       <button
         type="submit"
         disabled={buttonDisabled}
-        className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+        className={`py-2 w-full border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600 ${buttonDisabled ? "opacity-50" : "opacity-100"}`}
       >
-        SignUp
+        Login
       </button>
       <p>
         Not have an Account ?{" "}

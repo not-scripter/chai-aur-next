@@ -8,12 +8,9 @@ dbConnect();
 
 export async function POST(request: NextRequest) {
   try {
-    const requestBody = await request.json();
-    const { email, password } = requestBody;
+    const { email, password } = await request.json();
 
-    console.log(requestBody);
-
-    const user = User.findOne({ email });
+    const user: any = await User.findOne({ email });
 
     if (!user) {
       return NextResponse.json(
@@ -24,14 +21,12 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(user);
-
     const validPassword = await bcrypt.compare(password, user.password);
 
     if (!validPassword) {
       return NextResponse.json(
         {
-          error: "invalid email address",
+          error: "invalid password",
         },
         { status: 400 },
       );
@@ -53,6 +48,7 @@ export async function POST(request: NextRequest) {
     });
 
     response.cookies.set("token", token, { httpOnly: true });
+    return response;
   } catch (error: any) {
     return NextResponse.json(
       {

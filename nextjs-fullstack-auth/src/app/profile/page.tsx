@@ -35,11 +35,21 @@ export default function page() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <h1>Profile</h1>
+      <h1 className="text-3xl font-bold">Profile</h1>
       <hr />
-      <h2>
-        {data && <Link href={`/profile/${data._id}`}>View your Profile</Link>}
-      </h2>
+      {data && (
+        <>
+          <div className="flex justify-between p-4 w-full">
+            <h2>Username: {data.username}</h2>
+          </div>
+          <Link
+            className="p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            href={`/profile/${data._id}`}
+          >
+            View your Profile
+          </Link>
+        </>
+      )}
       <hr />
       <button
         type="button"
